@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 
@@ -12,9 +13,10 @@ import java.util.ArrayList;
 
 public class HelloController {
 
-    @GetMapping("/hello")
-    public String getHello(){
-        return "hello";
+    @GetMapping("/hello/{name}")
+    @ResponseBody
+    public String getHello(@PathVariable String name){
+        return "Hello, " + name + ". Is it me you're looking for?";
     }
 
     @GetMapping("/capitalize/{word}")
