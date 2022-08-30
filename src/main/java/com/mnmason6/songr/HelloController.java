@@ -13,10 +13,9 @@ import java.util.ArrayList;
 
 public class HelloController {
 
-    @GetMapping("/hello/{name}")
-    @ResponseBody
-    public String getHello(@PathVariable String name){
-        return "Hello, " + name + ". Is it me you're looking for?";
+    @GetMapping("/hello")
+    public String getHello(){
+        return "hello";
     }
 
     @GetMapping("/capitalize/{word}")
