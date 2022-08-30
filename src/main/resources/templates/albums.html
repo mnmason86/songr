@@ -2,15 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Album Colletion</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div th:each="a : ${albumList}">
+<div th:each="a : ${albumList}" id="albums">
     <p>Album Title: <span th:text="${a.title}"></span></p>
     <p>Artist: <span th:text="${a.artist}"></span></p>
     <p>Song Count: <span th:text="${a.songCount}"></span></p>
     <p>Length in Seconds: <span th:text="${a.length}"></span></p>
-    <p>Image: <img alt="CoverArt" th:src="${a.imageUrl}"/></p>
+    <img alt="CoverArt" th:src="${a.imageUrl}"/>
 </div>
 </body>
 </html>
