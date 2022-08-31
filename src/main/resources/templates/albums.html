@@ -2,16 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Album Colletion</title>
+    <title>Album Collection</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<h1>Welcome to Songr!</h1>
 <div th:each="a : ${albumList}" id="albums">
     <p>Album Title: <span th:text="${a.title}"></span></p>
     <p>Artist: <span th:text="${a.artist}"></span></p>
     <p>Song Count: <span th:text="${a.songCount}"></span></p>
     <p>Length in Seconds: <span th:text="${a.length}"></span></p>
-    <img alt="CoverArt" th:src="${a.imageUrl}"/>
+    <img alt="CoverArt" th:src="${a.imageUrl}" />
 </div>
+<form action="/" method="post">
+    <fieldset>
+        <legend>Add a new album to your collection</legend>
+        <label>Album Title</label>
+        <input type="text" name="title">
+        <label>Artist</label>
+        <input type="text" name="artist">
+        <label>Number of Songs</label>
+        <input type="number" name="songCount">
+        <label>Runtime in Seconds</label>
+        <input type="text" name="length">
+        <label>Cover Art Image</label>
+        <input type="text" name="imageUrl">
+        <input type="submit" value="addAlbum">
+    </fieldset>
+</form>
 </body>
 </html>
