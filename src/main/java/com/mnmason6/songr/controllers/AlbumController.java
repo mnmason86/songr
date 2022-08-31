@@ -10,22 +10,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 @Controller
 public class AlbumController {
     @Autowired
     SongrAlbumRepository songrAlbumRepository;
 
     @GetMapping("/")
-    public String getSongrAlbums(Model m){
-        Album[] albums = SongrAlbumRepository.findAll();
-        m.addAttribute("albums", albums);
+    public String getAlbums(Model m){
+        List<Album> albumList = songrAlbumRepository.findAll();
+        m.addAttribute("albumList", albumList);
         return "albums";
     }
 
-    @PostMapping("addAlbum")
-    public RedirectView addAlbum(String title, String artist, int songCount,
-                                 int length, String imageUrl){
-        Album newAlbum = new Album(title,artist, songCount, length, imageUrl);
+    @PostMapping("/")
+    public RedirectView addAlbum(String title, String artist, Integer songCount,
+                                 Integer length, String imageUrl){
+        Album newAlbum = new Album(title, artist, songCount, length, imageUrl);
         songrAlbumRepository.save(newAlbum);
         return new RedirectView("/");
     }
