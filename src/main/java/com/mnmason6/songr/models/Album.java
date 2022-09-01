@@ -1,9 +1,7 @@
 package com.mnmason6.songr.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -17,6 +15,9 @@ public class Album {
     private Integer length;
     private String imageUrl;
 
+    @OneToMany(mappedBy = "album")
+    List<Song> songsOnAlbum;
+
     protected Album(){
     }
 
@@ -29,6 +30,13 @@ public class Album {
         this.imageUrl = imageUrl;
     }
 
+    public List<Song> getSongsOnAlbum(){
+        return songsOnAlbum;
+    }
+
+    public long getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;
